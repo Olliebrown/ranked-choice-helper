@@ -1,0 +1,23 @@
+{
+  "name": "ranked-choice-helper",
+  "version": "0.1.0",
+  "description": "Tool for applying ranked choice voting with instant runoff.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Seth Berrier",
+  "license": "MIT",
+  "dependencies": {
+    "ranked-voting": "file:../ranked-voting-ts/"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.6.0"
+  }
+}
