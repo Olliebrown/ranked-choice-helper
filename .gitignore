@@ -1,6 +1,11 @@
-output/*
-output/*.*
+# Leave out input files except for example.json
+input/**/*
+!input/example.json
+
+# Leave out output files except for .gitkeep (so folder is not empty)
+output/**/*
 !output/.gitkeep
 
+# Libs and OS files
 node_modules/
 .DS_Store

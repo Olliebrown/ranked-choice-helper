@@ -11,7 +11,7 @@
   "author": "Seth Berrier",
   "license": "MIT",
   "dependencies": {
-    "ranked-voting": "file:../ranked-voting-ts/"
+    "ranked-voting": "github:Olliebrown/ranked-voting-ts#4d461848569b2fbd616d24ef87a3220580a98614"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
