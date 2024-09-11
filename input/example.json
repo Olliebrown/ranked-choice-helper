@@ -1,0 +1,15 @@
+{
+  "choices": [
+    "spring",
+    "summer",
+    "fall",
+    "winter"
+  ],
+  "ballots": [
+    { "username": "Albert", "votes": ["spring", "summer"] },
+    { "username": "Bethany", "votes": ["fall", "spring"]},
+    { "username": "Consuela", "votes": ["fall", "winter"]},
+    { "username": "Davida", "votes": ["summer", "spring"]},
+    { "username": "Elohim", "votes": ["summer", "winter"]}
+  ]
+}

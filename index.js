@@ -5,16 +5,26 @@ import { UserVotes, VoteOption, VoteController } from 'ranked-voting'
 // - 'borda': Score choices weighted by rank (1st, 2nd, 3rd, etc.)
 // - 'tally': Count all votes equally regardless of rank
 // - Anything else: Score 1st rank votes only (traditional rank choice)
-const mode = 'default'
+const mode = 'borda'
 
-// 8a section
-const rawData = fs.readFileSync('input/450-fa24-230p.json', { encoding: 'utf8' })
+// TODO: Put your data here instead of the example data
+const rawData = fs.readFileSync('input/example.json', { encoding: 'utf8' })
 const voteData = JSON.parse(rawData)
+
+// Find longest choice name for padding
+const longestChoiceName = voteData.choices.reduce(
+  (acc, choice) => Math.max(acc, choice.length), 0
+)
+
+// Find largest number of votes for borda
+const bordaMax = voteData.ballots.reduce(
+  (acc, ballot) => Math.max(acc, ballot.votes.length), 0
+)
 
 // Build controller with options and indicated score mode
 const voteController = new VoteController(
   voteData.choices.map(choice => new VoteOption(choice)),
-  (mode === 'borda' ? 3 : 0),
+  (mode === 'borda' ? bordaMax : 0),
   mode === 'tally'
 )
 
@@ -75,7 +85,7 @@ function summarizeStage (stageResult, i) {
   // Output the stage number and summary for each choice
   console.log(`Stage ${i + 1}:`)
   resultArray.forEach(({ gameName, voteCounts, score }) => {
-    console.log(`\t${(gameName + ':').padEnd(52, ' ')} ${voteCounts.map(x => x.toString().padStart(2, ' ')).join(', ')} (Score: ${score.toString().padStart(2)})`)
+    console.log(`\t${(gameName + ':').padEnd(longestChoiceName + 1, ' ')} ${voteCounts.map(x => x.toString().padStart(2, ' ')).join(', ')} (Score: ${score.toString().padStart(2)})`)
   })
 
   // Make array of empty ballots
